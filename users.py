@@ -1,14 +1,20 @@
 from site import USER_BASE
 import sqlite3
+import csv
 
 
 DB_NAME = 'users.db'
+FILE_NAME = "sample_users.csv"
+
 
 
 USER_INPUT = """
 Enter the option:
         1. CREATE TABLE users
+        2. Import data from CSV file
+
 """
+
 
 
 CREATE_USERS_TABLE_QUERY = """
@@ -29,15 +35,20 @@ CREATE_USERS_TABLE_QUERY = """
     );
 """
 
+
+
+
 def create_connection(db_name):
     conn = sqlite3.connect(db_name)
     return conn
+
 
 
 def create_table_user(conn):
     cur = conn.cursor()
     cur.execute(CREATE_USERS_TABLE_QUERY)
     print("User table created successfully")
+
 
 
 
