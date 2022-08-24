@@ -15,7 +15,8 @@ Enter the option:
         3. Insert Record to db   
         4. Delete a record of table user
         5. Delete all records from table
-        6. Update the record
+        6. Select all records from table
+        7. Update the record
 """
 
 
@@ -83,6 +84,8 @@ def open_csv_file(file_name):
             db_data.append(tuple(datum))
     return db_data
 
+
+
 def insert_record_to_table(conn, data):
     insert_query = """
     INSERT INTO 
@@ -95,15 +98,7 @@ def insert_record_to_table(conn, data):
 
     cur = conn.executemany(insert_query, data)
     conn.commit()
-    print("All records inserted to table")
-
-
-
-
-def select_records_from_table(conn):
-    cur = conn.execute("SELECT * from users;")
-    for row in cur:
-        print(row)
+    print("Successfully inserted data to user table")
 
 
 
@@ -118,6 +113,15 @@ def delete_all_records(conn):
     cur = conn.execute("DELETE from users;")
     conn.commit()
     print(f"Successfully deleted all records")
+
+
+
+
+
+def select_records_from_table(conn):
+    cur = conn.execute("SELECT * from users;")
+    for row in cur:
+        print(row)
 
 
 
@@ -142,7 +146,13 @@ def main():
         insert_record_to_table(conn, data)
 
     elif user_input == "3":
-        select_records_from_table(conn)
+            data = []
+            for column in COLUMNS:
+                user_input = input(f"Enter {column}: ")
+                data.append(user_input)
+
+            data = tuple(data)
+            insert_record_to_table(conn, [data])
 
     elif user_input == "4":
         record_id = input("Enter id of record: ")
@@ -158,6 +168,9 @@ or press n or No to skip "
             delete_all_records(conn)
 
     elif user_input == "6":
+        select_records_from_table(conn)
+
+    elif user_input == "7":
         column_name = input(COLUMN_INPUT_STRING)
         if column_name in COLUMNS:
             column_value = input(f"Enter the value of {column_name}: ")
