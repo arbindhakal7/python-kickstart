@@ -88,6 +88,11 @@ def main():
         #create table users
         create_table_user(conn)
 
+    elif user_input == "2":
+        data = open_csv_file(FILE_NAME)
+        insert_record_to_table(conn, data)
+
+
 
 
 if __name__ == '__main__':
