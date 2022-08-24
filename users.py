@@ -14,6 +14,7 @@ Enter the option:
         2. Import data from CSV file
         3. Select Records from users   
         4. Delete a record of table user
+        5. Delete all records from table
 
 """
 
@@ -97,6 +98,11 @@ def delete_record(conn, user_id):
 
 
 
+def delete_all_records(conn):
+    cur = conn.execute("DELETE from users;")
+    conn.commit()
+    print(f"Successfully deleted all records")
+
 
 
 def main():
@@ -119,6 +125,16 @@ def main():
         record_id = input("Enter id of record: ")
         if record_id.isnumeric():
             delete_record(conn, record_id)
+
+    elif user_input == "5":
+        confirmation = input(
+            "Are you sure? Press y or Yes to continue \
+or press n or No to skip "
+        )
+        if confirmation.lower() in ["y", "Yes"]:
+            delete_all_records(conn)
+
+
 
 if __name__ == '__main__':
     main()
