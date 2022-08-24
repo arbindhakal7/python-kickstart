@@ -12,7 +12,7 @@ USER_INPUT = """
 Enter the option:
         1. CREATE TABLE users
         2. Import data from CSV file
-
+        3. Select Records from users    
 """
 
 
@@ -100,6 +100,8 @@ def main():
         data = open_csv_file(FILE_NAME)
         insert_record_to_table(conn, data)
 
+    elif user_input == "3":
+        select_records_from_table(conn)
 
 
 
