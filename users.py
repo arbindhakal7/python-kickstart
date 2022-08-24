@@ -157,6 +157,14 @@ or press n or No to skip "
         if confirmation.lower() in ["y", "Yes"]:
             delete_all_records(conn)
 
+    elif user_input == "6":
+        column_name = input(COLUMN_INPUT_STRING)
+        if column_name in COLUMNS:
+            column_value = input(f"Enter the value of {column_name}: ")
+            user_id = input("Enter the id of the user: ")
+            update_records_with_id(
+                conn, column_name, column_value, user_id
+            )
 
 
 if __name__ == '__main__':
