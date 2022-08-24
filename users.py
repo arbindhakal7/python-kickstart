@@ -12,7 +12,9 @@ USER_INPUT = """
 Enter the option:
         1. CREATE TABLE users
         2. Import data from CSV file
-        3. Select Records from users    
+        3. Select Records from users   
+        4. Delete a record of table user
+
 """
 
 
@@ -83,6 +85,16 @@ def select_records_from_table(conn):
     cur = conn.execute("SELECT * from users;")
     for row in cur:
         print(row)
+
+
+
+
+
+def delete_record(conn, user_id):
+    cur = conn.execute("DELETE from users where id = ?", (user_id,))
+    conn.commit()
+    print(f"Successfully deleted a record with id {user_id}")
+
 
 
 
