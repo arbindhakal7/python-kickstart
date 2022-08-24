@@ -62,6 +62,19 @@ def open_csv_file(file_name):
             db_data.append(tuple(datum))
     return db_data
 
+def insert_record_to_table(conn, data):
+    insert_query = """
+    INSERT INTO 
+        users
+            (first_name, last_name, company_name, address, city, country, state, zip, phone1, phone2, email, web)
+    VALUES
+        (?,?,?,?,?,?,?,?,?,?,?,?)
+    
+    """
+
+    cur = conn.executemany(insert_query, data)
+    conn.commit()
+    print("All records inserted to table")
 
 
 
