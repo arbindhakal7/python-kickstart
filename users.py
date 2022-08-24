@@ -115,7 +115,10 @@ def main():
     elif user_input == "3":
         select_records_from_table(conn)
 
-
+    elif user_input == "4":
+        record_id = input("Enter id of record: ")
+        if record_id.isnumeric():
+            delete_record(conn, record_id)
 
 if __name__ == '__main__':
     main()
