@@ -15,7 +15,7 @@ Enter the option:
         3. Select Records from users   
         4. Delete a record of table user
         5. Delete all records from table
-
+        6. Update the record
 """
 
 
@@ -37,6 +37,24 @@ CREATE_USERS_TABLE_QUERY = """
         web text
     );
 """
+
+
+COLUMNS = (
+    "first_name",
+    "last_name",
+    "company_name",
+    "address",
+    "city",
+    "country",
+    "state",
+    "zip",
+    "phone1",
+    "phone2",
+    "email",
+    "web",
+)
+
+COLUMN_INPUT_STRING = f"""Which column would you like to update? Please make sure the column is one of the following: {COLUMNS} """
 
 
 
