@@ -12,7 +12,7 @@ USER_INPUT = """
 Enter the option:
         1. CREATE TABLE users
         2. Import data from CSV file
-        3. Select Records from users   
+        3. Insert Record to db   
         4. Delete a record of table user
         5. Delete all records from table
         6. Update the record
