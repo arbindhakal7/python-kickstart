@@ -33,8 +33,24 @@ def create_connection(db_name):
     conn = sqlite3.connect(db_name)
     return conn
 
+
 def create_table_user(conn):
     cur = conn.cursor()
     cur.execute(CREATE_USERS_TABLE_QUERY)
     print("User table created successfully")
 
+
+
+def main():
+    conn = create_connection(DB_NAME)
+
+    user_input = input(USER_INPUT)
+
+    if user_input == '1':
+        #create table users
+        create_table_user(conn)
+
+
+
+if __name__ == '__main__':
+    main()
