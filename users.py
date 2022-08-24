@@ -28,3 +28,13 @@ CREATE_USERS_TABLE_QUERY = """
         web text
     );
 """
+
+def create_connection(db_name):
+    conn = sqlite3.connect(db_name)
+    return conn
+
+def create_table_user(conn):
+    cur = conn.cursor()
+    cur.execute(CREATE_USERS_TABLE_QUERY)
+    print("User table created successfully")
+
