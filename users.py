@@ -125,7 +125,6 @@ def select_records_from_table(conn):
 
 
 
-
 def update_records_with_id(conn, column_name, column_value, user_id):
     cur = conn.execute(f"UPDATE users set {column_name} = ? where id = ?", (column_value, user_id))
     conn.commit()
@@ -171,13 +170,13 @@ or press n or No to skip "
         select_records_from_table(conn)
 
     elif user_input == "7":
-        column_name = input(COLUMN_INPUT_STRING)
-        if column_name in COLUMNS:
-            column_value = input(f"Enter the value of {column_name}: ")
-            user_id = input("Enter the id of the user: ")
-            update_records_with_id(
-                conn, column_name, column_value, user_id
-            )
+        user_id = input("Enter id of user: ")
+        if user_id.isnumeric():
+                column_name = input(COLUMN_INPUT_STRING)
+                column_value = input(f"Enter value of {column_name}: ")
+                update_records_with_id(conn, column_name, user_id, column_value)
+        else:
+            exit()
 
 
 if __name__ == '__main__':
