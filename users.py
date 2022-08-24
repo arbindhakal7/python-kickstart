@@ -79,6 +79,14 @@ def insert_record_to_table(conn, data):
 
 
 
+def select_records_from_table(conn):
+    cur = conn.execute("SELECT * from users;")
+    for row in cur:
+        print(row)
+
+
+
+
 def main():
     conn = create_connection(DB_NAME)
 
