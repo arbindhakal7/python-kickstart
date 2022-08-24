@@ -52,6 +52,20 @@ def create_table_user(conn):
 
 
 
+def open_csv_file(file_name):
+
+    db_data = []
+
+    with open('sample_users.csv') as f:
+        data = csv.reader(f) #iterator
+        for datum in data:
+            db_data.append(tuple(datum))
+    return db_data
+
+
+
+
+
 def main():
     conn = create_connection(DB_NAME)
 
