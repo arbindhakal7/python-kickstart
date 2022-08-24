@@ -108,12 +108,10 @@ def select_records_from_table(conn):
 
 
 
-
 def delete_record(conn, user_id):
     cur = conn.execute("DELETE from users where id = ?", (user_id,))
     conn.commit()
     print(f"Successfully deleted a record with id {user_id}")
-
 
 
 def delete_all_records(conn):
@@ -122,6 +120,13 @@ def delete_all_records(conn):
     print(f"Successfully deleted all records")
 
 
+
+
+def update_records_with_id(conn, column_name, column_value, user_id):
+    cur = conn.execute(f"UPDATE users set {column_name} = ? where id = ?", (column_value, user_id))
+    conn.commit()
+    print(f"Successfully updated {column_name} of {user_id}")
+    
 
 def main():
     conn = create_connection(DB_NAME)
